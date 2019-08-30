@@ -10,6 +10,10 @@ library('dplyr')
 ## load in the model data
 pond <- read_csv(here('ModelData.csv'))
 
+## fix up the order of levels for Salinity_code: N, W, M, S
+pond <- mutate(pond, Salinity_code = factor(Salinity_code,
+                                            levels = c('N','W','M','S')))
+
 ## co2 figure
 ## needs DO.sat, Alk.mg.L, NOx.ug.N.L, b.f.max, CEC, delI18O, Residence_time,
 ##       Elevation, Salinity_code, Landuse
